@@ -9,13 +9,14 @@ import { useState } from "react"
 
 
 
-export default function Cards({ index, question, answer }) {
+export default function Cards({ index, question, answer}) {
 
     const [start, setStart] = useState(false)
     const [game, setGame] = useState(true)
     const [end, setEnd] = useState(true)
     const [restart, setRestart] = useState(true)
     const [final, setFinal] = useState([])
+    const [tarefasFinalizadas, setTarefasFinalizadas ] = useState(0)
 
 
 
@@ -23,6 +24,7 @@ export default function Cards({ index, question, answer }) {
     function turnCard() {
         setStart(true)
         setGame(false)
+
     }
 
     function Question() {
@@ -32,14 +34,14 @@ export default function Cards({ index, question, answer }) {
     }
 
     function finalCard(c) {
-
         setEnd(true)
         setRestart(false)
+        setFinal([...final, c])
 
-
-
-
+        
     }
+
+    
 
 
     if (!start) {
@@ -63,26 +65,37 @@ export default function Cards({ index, question, answer }) {
                 <h1>{answer}</h1>
 
                 <Button>
-                    <button onClick={() => finalCard(final)} className="vermelho">Não lembrei</button>
-                    <button onClick={() => finalCard(final)} className="laranja">Quase não lembrei</button>
-                    <button onClick={() => finalCard()} className="verde">Zap!</button>
+                    <button onClick={() => finalCard('erro')} className="vermelho">Não lembrei</button>
+                    <button onClick={() => finalCard('quase')} className="laranja">Quase não lembrei</button>
+                    <button onClick={() => finalCard('zap')} className="verde">Zap!</button>
                 </Button>
             </AnswerCard>
         )
     } if (!restart) {
-
-        return (
-            <Card>
-                <h1 className="line erro">Pergunta {index + 1}</h1>
-                <img src={erro} alt="icone-erro" />
-            </Card>
-        )
+        if (final.includes('erro')) {
+            return (
+                <Card>
+                    <h1 className="line erro">Pergunta {index + 1}</h1>
+                    <img src={erro} alt="icone-erro" />
+                </Card>
+            )
+        } else if (final.includes('quase')) {
+            return (
+                <Card>
+                    <h1 className="line quase">Pergunta {index + 1}</h1>
+                    <img src={quase} alt="icone-quase" />
+                </Card>
+            )
+        } else {
+            return (
+                <Card>
+                    <h1 className="line certo">Pergunta {index + 1}</h1>
+                    <img src={certo} alt="icone-certo" />
+                </Card>
+            )
+        }
 
     }
-
-
-
-
 
 
 
@@ -137,7 +150,7 @@ const Card = styled.div`
         
         color:#FF922E;
     }
-    .acerto{ 
+    .certo{ 
         color:#2FBE34;
     }
     

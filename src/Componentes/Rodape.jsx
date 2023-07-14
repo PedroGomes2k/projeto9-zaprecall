@@ -1,10 +1,10 @@
 import { styled } from "styled-components"
 
-export default function Rodape({indice}) {
+export default function Rodape({contador}) {
     return (
         <Fotter>
 
-        <h1> {}/{indice} CONCLUÍDOS</h1>
+        <h1> {contador + 1} / 8 CONCLUÍDOS</h1>
         </Fotter>
     )
 }

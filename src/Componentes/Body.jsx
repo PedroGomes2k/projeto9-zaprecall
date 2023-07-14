@@ -25,7 +25,9 @@ export default function Body() {
       )}
 
     </Container>
-    <Rodape />
+    <Rodape 
+    
+    />
     </>
   )
 }
