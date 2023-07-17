@@ -69,7 +69,7 @@ export default function Cards(props) {
 
                 <Button>
                     <button onClick={() => finalCard('erro')} className="vermelho" data-test="no-btn">Não lembrei</button>
-                    <button onClick={() => finalCard('quase')} className="laranja" data-test="partial-btn">Quase não lembrei</button>
+                    <button onClick={() => finalCard('quase')} className="laranja" data-test="partial-btn">Quase Não lembrei</button>
                     <button onClick={() => finalCard('zap')} className="verde" data-test="zap-btn">Zap!</button>
                 </Button>
             </AnswerCard>
