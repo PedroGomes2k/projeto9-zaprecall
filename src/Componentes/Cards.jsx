@@ -9,14 +9,16 @@ import { useState } from "react"
 
 
 
-export default function Cards({ index, question, answer}) {
+export default function Cards(props) {
+
+    const { index, question, answer, setContador ,contador } = props
 
     const [start, setStart] = useState(false)
     const [game, setGame] = useState(true)
     const [end, setEnd] = useState(true)
     const [restart, setRestart] = useState(true)
     const [final, setFinal] = useState([])
-    const [tarefasFinalizadas, setTarefasFinalizadas ] = useState(0)
+    
 
 
 
@@ -31,43 +33,44 @@ export default function Cards({ index, question, answer}) {
         setGame(true)
         setEnd(false)
 
+        
     }
 
-    function finalCard(c) {
+    function finalCard(c, i) {
         setEnd(true)
         setRestart(false)
         setFinal([...final, c])
 
-        
+        setContador(contador + 1 )
     }
 
-    
+
 
 
     if (!start) {
 
         return (
-            <Card>
-                <h1>Pergunta {index + 1}</h1>
-                <img src={seta} alt="seta-card" onClick={() => turnCard()} />
+            <Card data-test="flashcard">
+                <h1 data-test="flashcard-text">Pergunta {index + 1}</h1>
+                <img src={seta} alt="seta-card" onClick={() => turnCard()}  data-test="play-btn"/>
             </Card>
         )
     } if (!game) {
         return (
             <TurnCard>
-                <h1>{question}</h1>
-                <img src={virar} alt="seta-virar-card" onClick={() => Question()} />
+                <h1 data-test="flashcard-text">{question}</h1>
+                <img src={virar} alt="seta-virar-card" onClick={() => Question()} data-test="turn-btn"/>
             </TurnCard>
         )
     } if (!end) {
         return (
             <AnswerCard>
-                <h1>{answer}</h1>
+                <h1 data-test="flashcard-text">{answer}</h1>
 
                 <Button>
-                    <button onClick={() => finalCard('erro')} className="vermelho">Não lembrei</button>
-                    <button onClick={() => finalCard('quase')} className="laranja">Quase não lembrei</button>
-                    <button onClick={() => finalCard('zap')} className="verde">Zap!</button>
+                    <button onClick={() => finalCard('erro')} className="vermelho" data-test="no-btn">Não lembrei</button>
+                    <button onClick={() => finalCard('quase')} className="laranja" data-test="partial-btn">Quase não lembrei</button>
+                    <button onClick={() => finalCard('zap')} className="verde" data-test="zap-btn">Zap!</button>
                 </Button>
             </AnswerCard>
         )
@@ -75,22 +78,22 @@ export default function Cards({ index, question, answer}) {
         if (final.includes('erro')) {
             return (
                 <Card>
-                    <h1 className="line erro">Pergunta {index + 1}</h1>
-                    <img src={erro} alt="icone-erro" />
+                    <h1 className="line erro" data-test="flashcard-text">Pergunta {index + 1}</h1>
+                    <img src={erro} alt="icone-erro" data-test="no-icon"/>
                 </Card>
             )
         } else if (final.includes('quase')) {
             return (
                 <Card>
-                    <h1 className="line quase">Pergunta {index + 1}</h1>
-                    <img src={quase} alt="icone-quase" />
+                    <h1 className="line quase" data-test="flashcard-text">Pergunta {index + 1}</h1>
+                    <img src={quase} alt="icone-quase" data-test="partial-icon"/>
                 </Card>
             )
         } else {
             return (
                 <Card>
-                    <h1 className="line certo">Pergunta {index + 1}</h1>
-                    <img src={certo} alt="icone-certo" />
+                    <h1 className="line certo" data-test="flashcard-text">Pergunta {index + 1}</h1>
+                    <img src={certo} alt="icone-certo"  data-test="zap-icon"/>
                 </Card>
             )
         }

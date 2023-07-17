@@ -3,31 +3,37 @@ import imagem from "./../assets/logo.png"
 import Cards from "./Cards"
 import cards from "../cards"
 import Rodape from "./Rodape"
+import { useState } from "react"
 
-export default function Body() {
+export default function Body(props) {
+
+  const [contador, setContador] = useState(0)
 
   return (
     <>
-    <Container>
-      <Topo >
-        <img src={imagem} alt="logo" />
-        <h1> ZapRecall</h1>
-      </Topo>
+      <Container>
+        <Topo >
+          <img src={imagem} alt="logo" />
+          <h1> ZapRecall</h1>
+        </Topo>
 
 
-      {cards.map((c, i) =>
-        <Cards
-          key={c.question}
-          index={i}
-          question={c.question}
-          answer={c.answer}
-        />
-      )}
+        {cards.map((c, i) =>
+          <Cards
+            key={c.question}
+            index={i}
+            question={c.question}
+            answer={c.answer}
+            contador={contador}
+          />
+        )}
 
-    </Container>
-    <Rodape 
-    
-    />
+      </Container>
+      <Rodape
+        
+        contador={contador}
+
+      />
     </>
   )
 }

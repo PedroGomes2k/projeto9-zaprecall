@@ -1,10 +1,11 @@
 import { styled } from "styled-components"
 
-export default function Rodape({contador}) {
+export default function Rodape(props) {
+    const {contador, cards} = props
     return (
-        <Fotter>
+        <Fotter data-test="footer">
 
-        <h1> {contador + 1} / 8 CONCLUÍDOS</h1>
+        <h1> {contador} / 8 CONCLUÍDOS</h1>
         </Fotter>
     )
 }
