@@ -1,12 +1,12 @@
 import { styled } from "styled-components"
 import imagem from "./../assets/logo.png"
 import Cards from "./Cards"
-import cards from "../cards"
 import Rodape from "./Rodape"
 import { useState } from "react"
 
 export default function Body(props) {
 
+  const { cards } = props
   const [contador, setContador] = useState(0)
 
   return (
@@ -25,12 +25,13 @@ export default function Body(props) {
             question={c.question}
             answer={c.answer}
             contador={contador}
+            setContador={setContador}
           />
         )}
 
       </Container>
       <Rodape
-        
+        card={cards}
         contador={contador}
 
       />
@@ -41,7 +42,7 @@ export default function Body(props) {
 
 const Container = styled.div`
   width: 375px;
-  height:580px;
+  height:514px;
 
   background-color:#FB6B6B;
 

@@ -41,7 +41,7 @@ export default function Cards(props) {
         setRestart(false)
         setFinal([...final, c])
 
-        setContador(contador + 1 )
+       setContador(contador + 1)
     }
 
 

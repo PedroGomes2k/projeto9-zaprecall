@@ -2,10 +2,11 @@ import { styled } from "styled-components"
 
 export default function Rodape(props) {
     const {contador, cards} = props
+    
     return (
         <Fotter data-test="footer">
 
-        <h1> {contador} / 8 CONCLUÍDOS</h1>
+        <h1> {contador} / {cards} CONCLUÍDOS</h1>
         </Fotter>
     )
 }
@@ -15,6 +16,7 @@ const Fotter = styled.div`
     width: 375px;
     height:70px;
 
+    
    
     align-items: center;
     justify-content: center;
@@ -23,7 +25,7 @@ const Fotter = styled.div`
 
     background-color:#FFFFFF;
     box-shadow: 0px -4px 6px 0px #0000000D;
-    border: 0.5px solid ;
+    
 
         
     h1{
