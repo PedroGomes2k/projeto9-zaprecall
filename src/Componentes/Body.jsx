@@ -3,6 +3,8 @@ import imagem from "./../assets/logo.png"
 import Cards from "./Cards"
 import Rodape from "./Rodape"
 import { useState } from "react"
+import { Link } from "react-router-dom"
+
 
 export default function Body(props) {
 
@@ -12,10 +14,12 @@ export default function Body(props) {
   return (
     <>
       <Container>
-        <Topo >
-          <img src={imagem} alt="logo" />
-          <h1> ZapRecall</h1>
-        </Topo>
+        
+          <Topo >
+            <img src={imagem} alt="logo" />
+            <h1> ZapRecall</h1>
+          </Topo>
+        
 
 
         {cards.map((c, i) =>
@@ -44,19 +48,16 @@ const Container = styled.div`
   width: 375px;
   height:514px;
 
-  background-color:#FB6B6B;
-
-  color:#FFFFFF;
-
-  
+  background-color:#FB6B6B; 
   overflow-x: hidden;
-  
-  
+ 
 `
 
 const Topo = styled.div`
   display: flex;
   justify-content:center;
+  
+  
   
   margin-bottom: 30px;
 
@@ -75,5 +76,12 @@ const Topo = styled.div`
     font-family: 'Righteous', cursive;
     font-weight:400;
     font-size:36px;
+
+    color:#FFFFFF;
+  
+    
   }
+  
+        
+  
 `

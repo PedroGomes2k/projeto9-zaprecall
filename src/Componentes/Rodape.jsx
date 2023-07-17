@@ -2,7 +2,7 @@ import { styled } from "styled-components"
 
 export default function Rodape(props) {
     const {contador,card} = props
-    console.log(props)
+    
     return (
         <Fotter data-test="footer">
 
