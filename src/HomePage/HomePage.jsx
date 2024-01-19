@@ -5,6 +5,7 @@ export default function HomePage() {
     return (
         <Home>
             <img src={logo} alt="logo-img" />
+
             <p>ZapRecall</p>
 
             <Link to={"/Cards"}>
@@ -20,10 +21,8 @@ const Home = styled.div`
     flex-direction: column;
     align-items: center;
     background-color: #FB6B6B;
-    width: 375px;
-    height: 590px;
-
-    
+    width: 100%;
+    height:900px;
 
     img{
 
