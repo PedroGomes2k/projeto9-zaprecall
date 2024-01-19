@@ -212,7 +212,7 @@ const AnswerCard = styled.div`
   background-color: #ffffd4;
 
   margin: 15px auto;
-  margin-bottom: 100px;
+
   box-shadow: 0px 4px 5px 0px #00000026;
 
   h1 {

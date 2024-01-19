@@ -45,7 +45,7 @@ const Container = styled.div`
   z-index: 1;
   overflow-x: hidden;
 
-  .cardsContainer{
+  .cardsContainer {
     margin-bottom: 130px;
   }
 `;
